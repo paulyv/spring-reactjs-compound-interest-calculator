@@ -2,3 +2,11 @@
 	padding-top: 80px;
 	padding-bottom: 50px;
 }
+
+.input-group {
+	padding-bottom: 20px;
+}
+
+#result {
+	padding-top: 20px;
+}
