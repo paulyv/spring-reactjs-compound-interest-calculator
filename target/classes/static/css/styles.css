@@ -1,5 +1,5 @@
 #main-form {
-	padding-top: 80px;
+	padding-top: 60px;
 	padding-bottom: 50px;
 }
 
@@ -9,4 +9,12 @@
 
 #result {
 	padding-top: 20px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	padding-bottom: 8px;
 }
