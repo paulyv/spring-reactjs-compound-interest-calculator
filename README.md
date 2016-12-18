@@ -1,6 +1,8 @@
-Starting point for spring boot + reactjs with nodejs & webpack app
+Simple compound interest calculator with spring boot + reactjs + nodejs & webpack
 
-Webpack command:
+run 'npm install' to get node modules
+ 
+Webpack command for watching changes and creating the bundle:
 node_modules/webpack/bin/webpack.js --progress --watch
 
 ![alt tag](https://github.com/paulyv/spring-reactjs-template/screen_shot.png)
