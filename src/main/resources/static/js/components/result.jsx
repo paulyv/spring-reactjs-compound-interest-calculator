@@ -4,8 +4,13 @@ import { Link } from 'react-router';
 import Years from './years.jsx';
 
 class Result extends React.Component {
-   
+
+      constructor(props) {
+      super();
+   }
+
    render() {
+      var compoundArray = [];
 
    	function addThousandSeparators(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -15,24 +20,21 @@ class Result extends React.Component {
 			return x.toString().replace(".", ",");
 		}
 
-      function compound(balance, interest, term, currentYear, compoundArray) {
-         if(term === 0) {
-            return 0;
-         } else {
+      function compound(balance, interest, addition, term, compoundArray) {
+         for(var i = 0; i < term; i++) {
+            balance += addition;
             balance += balance * interest;
             compoundArray.push(balance.toFixed(2));
-            return compound(balance, interest, term-1, currentYear+1, compoundArray);
          }
-      }
+         return balance;
+      };
 
    	this.amount = Number(this.props.amount)
    	this.interest = (Number(this.props.interest) / 100)
+      this.addition = (Number(this.props.addition) * 12)
    	this.years = Number(this.props.years)
-      var compoundArray = [];
-
-      compound(this.amount, this.interest, this.years, 0, compoundArray);
       
-      this.total = Math.pow((1 + this.interest), this.years) * this.amount;
+      this.total = compound(this.amount, this.interest, this.addition, this.years, compoundArray);
       this.result = addThousandSeparators(this.total.toFixed(2));
       this.result = replaceDotsWithCommas(this.result);
 
