@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Topbar
 import Topbar from './components/topbar.jsx';
@@ -15,7 +15,7 @@ const App = document.getElementById('react');
 ReactDOM.render(<Topbar />, Top);
 
 ReactDOM.render(
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		<Route path="/" component={Home}></Route>
 	</Router> 
 ,App);

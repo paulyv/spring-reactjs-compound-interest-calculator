@@ -43,9 +43,13 @@ class Result extends React.Component {
 
       return (
          <div>
-            <h2>Total: {this.result} €</h2>
-            <h4><Years yearsArray={compoundArray} /></h4>
-            <Chart money={compoundArray} years={yearsList}/>
+            <div class="col-xs-6">
+               <h2>Total: {this.result} €</h2>
+               <h4><Years yearsArray={compoundArray} /></h4>
+            </div>
+               <div class="col-xs-6">
+                  <Chart money={compoundArray} years={yearsList}/>
+               </div>
          </div>
       );
    }
