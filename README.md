@@ -5,6 +5,6 @@ run 'npm install' to get node modules
 Webpack command for watching changes and creating the bundle:
 node_modules/webpack/bin/webpack.js --progress --watch
 
-https://peaceful-bayou-90631.herokuapp.com
+https://compound-interest-calculator.herokuapp.com
 
 ![alt tag](https://github.com/paulyv/spring-reactjs-template/blob/master/screen_shot.png)
