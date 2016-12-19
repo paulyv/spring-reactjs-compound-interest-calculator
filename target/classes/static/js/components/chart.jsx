@@ -1,38 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Line} from 'react-chartjs-2';
 
-var LineChart = require("react-chartjs").Line;
+class Charts extends React.Component {
+  constructor(props) {
+    super();
+    }
 
-class Chart extends React.Component {
-	constructor() {
-		super();
-   	}
-
-   render () {
-
-   var horizontalBarChartData = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-                label: 'Dataset 1',
-                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: [
-                    1, 
-                    2, 
-                    3, 
-                    4, 
-                    5, 
-                    6, 
-                    7
-                ]
-            };
-	
-
-      return (
-      <LineChart data={horizontalBarChartData} width="600" height="250"/>
+    render () { 
+      const data = {
+      labels: this.props.years,
+      datasets: [
+    {
+      label: 'Compound interest',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: this.props.money
+    }
+  ]
+};
+return (
+         <div>
+            <Line data={data} />
+         </div>
       );
    }
 }
 
-export default Chart;
+export default Charts;
