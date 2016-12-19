@@ -4,8 +4,13 @@ import { Link } from 'react-router';
 import Years from './years.jsx';
 
 class Result extends React.Component {
-   
+
+      constructor(props) {
+      super();
+   }
+
    render() {
+      var compoundArray = [];
 
    	function addThousandSeparators(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -15,40 +20,28 @@ class Result extends React.Component {
 			return x.toString().replace(".", ",");
 		}
 
-      function compound(balance, interest, term, currentYear, compoundArray) {
-         if(term === 0) {
-            return 0;
-         } else {
+      function compound(balance, interest, addition, term, compoundArray) {
+         for(var i = 0; i < term; i++) {
+            balance += addition;
             balance += balance * interest;
-            compoundArray.push(balance);
-            return compound(balance, interest, term-1, currentYear+1, compoundArray);
+            compoundArray.push(balance.toFixed(2));
          }
-      }
+         return balance;
+      };
 
    	this.amount = Number(this.props.amount)
    	this.interest = (Number(this.props.interest) / 100)
+      this.addition = (Number(this.props.addition) * 12)
    	this.years = Number(this.props.years)
-
-      function createResult(arr) {
-         for(var i = 0; i < arr.length; i++) {
-            console.log('Year ' + i + ': ' + arr[i]);
-         }
-      }
-      const months = 12;
-   	this.total = this.amount * Math.pow((1 + this.interest / months), (months * this.years))
-
-   	this.result = addThousandSeparators(this.total.toFixed(2));
-   	this.result = replaceDotsWithCommas(this.result);
-
-      var compoundArray = [];
-      compound(this.amount, this.interest, this.years, 0, compoundArray);
-      console.log(compoundArray);
-      createResult(compoundArray);
+      
+      this.total = compound(this.amount, this.interest, this.addition, this.years, compoundArray);
+      this.result = addThousandSeparators(this.total.toFixed(2));
+      this.result = replaceDotsWithCommas(this.result);
 
       return (
          <div>
             <h2>Total: {this.result} €</h2>
-            <h5><Years yearsArray={this.compoundArray} /></h5>
+            <h4><Years yearsArray={compoundArray} /></h4>
          </div>
       );
    }

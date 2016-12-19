@@ -6,14 +6,22 @@ class Years extends React.Component {
 		super();
    	}
 
-   render() {
+   render () {
+	
+	var yearly = this.props.yearsArray.map(function(yr, index){
+		var formattedYearlyAmount = yr.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+			formattedYearlyAmount = formattedYearlyAmount.toString().replace(".", ",");
+
+		return <tr key={index}><td>Year {index + 1}:</td><td>{formattedYearlyAmount} €</td></tr>;
+	});
+
       return (
          <div>
-         	<ul>
-				 {this.props.years.map(function(value) {
-	                return <li key={value}>{value}</li>
-	            })}
-			</ul>
+         	<table class="table table-hover">
+         		<tbody>
+					{yearly}
+				</tbody>
+			</table>
          </div>
       );
    }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import Years from './years.jsx';
+import Chart from './chart.jsx';
 
 class Result extends React.Component {
 
@@ -11,6 +12,7 @@ class Result extends React.Component {
 
    render() {
       var compoundArray = [];
+      var yearsList = [];
 
    	function addThousandSeparators(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -21,10 +23,11 @@ class Result extends React.Component {
 		}
 
       function compound(balance, interest, addition, term, compoundArray) {
-         for(var i = 0; i < term; i++) {
+         for(var i = 1; i < term+1; i++) {
             balance += addition;
             balance += balance * interest;
             compoundArray.push(balance.toFixed(2));
+            yearsList.push('Year: ' + i);
          }
          return balance;
       };
@@ -42,6 +45,7 @@ class Result extends React.Component {
          <div>
             <h2>Total: {this.result} €</h2>
             <h4><Years yearsArray={compoundArray} /></h4>
+            <Chart money={compoundArray} years={yearsList}/>
          </div>
       );
    }
