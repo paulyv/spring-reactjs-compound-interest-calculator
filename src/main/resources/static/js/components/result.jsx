@@ -47,11 +47,11 @@ class Result extends React.Component {
 
       return (
          <div>
-            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                <h2>Total: {this.result} €</h2>
                <h4><Years yearsArray={compoundArray} /></h4>
             </div>
-               <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7" style={chartDivStyle}>
+               <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7" style={chartDivStyle}>
                   <Chart money={compoundArray} years={yearsList}/>
                </div>
          </div>
