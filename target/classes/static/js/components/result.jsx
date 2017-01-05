@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Years from './years.jsx';
 import Chart from './chart.jsx';
 
+var ReactFitText = require('react-fittext');
+
 class Result extends React.Component {
 
       constructor(props) {
@@ -11,6 +13,10 @@ class Result extends React.Component {
    }
 
    render() {
+      const chartDivStyle = {
+         marginTop: "20px"
+      };
+
       var compoundArray = [];
       var yearsList = [];
 
@@ -43,11 +49,11 @@ class Result extends React.Component {
 
       return (
          <div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
                <h2>Total: {this.result} €</h2>
                <h4><Years yearsArray={compoundArray} /></h4>
             </div>
-               <div class="col-xs-6">
+               <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7" style={chartDivStyle}>
                   <Chart money={compoundArray} years={yearsList}/>
                </div>
          </div>

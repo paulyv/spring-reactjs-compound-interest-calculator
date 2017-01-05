@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Years from './years.jsx';
 import Chart from './chart.jsx';
 
+var ReactFitText = require('react-fittext');
+
 class Result extends React.Component {
 
       constructor(props) {

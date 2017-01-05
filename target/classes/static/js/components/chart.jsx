@@ -11,7 +11,7 @@ class Charts extends React.Component {
       labels: this.props.years,
       datasets: [
     {
-      label: 'Compound interest',
+      label: 'Total amount',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
