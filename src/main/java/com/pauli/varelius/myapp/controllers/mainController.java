@@ -19,12 +19,6 @@ public class mainController {
 		return "index";
 	}
 	
-	@RequestMapping("/ktu")
-	public String ktu(Model model) {
-		model.addAttribute("text", "My Java Spring application");
-		return "test";
-	}
-	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		return "login";
